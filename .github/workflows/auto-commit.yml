@@ -1,0 +1,28 @@
+name: Auto Commit
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Runs every day at 12:00 UTC
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  auto_commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Make a change
+        run: |
+          echo "Automated commit at $(date)" >> auto-commit.log
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add auto-commit.log
+          git commit -m "chore: auto commit to keep the graph green"
+          git push
