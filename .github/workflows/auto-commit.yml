@@ -21,8 +21,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.email "hritikmaheshwari786@gmail.com"
+          git config --local user.name "SmashHash01"
           git add auto-commit.log
           git commit -m "chore: auto commit to keep the graph green"
           git push
